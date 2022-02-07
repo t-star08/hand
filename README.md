@@ -16,7 +16,7 @@
 
 ```sh
 # $GOPATH/bin にインストールされる
-$ go get -u github.com/t-star08/cheiron
+$ go get -u github.com/t-star08/hand
 ```
 
 ## 使い方
