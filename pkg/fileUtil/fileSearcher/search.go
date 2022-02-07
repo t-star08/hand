@@ -45,7 +45,7 @@ func forwardSearch(v *visitor.Visitor, path string, depth int) (string, error) {
 		if result, err := v.Evaluator.Evaluate(v.Goal, info); err != nil {
 			return path, err
 		} else if result {
-			return path, nil
+			return fmt.Sprintf("%s/%s", path, resource.Name()), nil
 		}
 	}
 
@@ -76,7 +76,7 @@ func backwardSearch(v *visitor.Visitor, path string, depth int) (string, error) 
 		if result, err := v.Evaluator.Evaluate(v.Goal, info); err != nil {
 			return path, err
 		} else if result {
-			return path, nil
+			return fmt.Sprintf("%s/%s", path, resource.Name()), nil
 		}
 	}
 

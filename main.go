@@ -14,7 +14,7 @@ import (
 
 var cmd = &cobra.Command {
 	Use: "hand",
-	Version: "v0.0.0",
+	Version: "v0.0.1",
 }
 
 func init() {

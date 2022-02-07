@@ -7,7 +7,7 @@ import (
 
 var (
 	configDirectory = ".hand"
-	configRoute = "/.hand/hand.json"
+	configFile = "hand.json"
 	evaluator = fileName.NewExactEvaluator()
 )
 
@@ -15,6 +15,6 @@ func SearchConfigFilePath() (string, error) {
 	if configPath, err := fileSearcher.BackwardSearch(evaluator, configDirectory, "."); err != nil {
 		return configPath, err
 	} else {
-		return configPath + configRoute, nil
+		return configPath + "/" + configFile, nil
 	}
 }

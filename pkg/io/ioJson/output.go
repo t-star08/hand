@@ -6,12 +6,12 @@ import (
 )
 
 func Puts(path string, data interface{}) error {
-	json_bytes, err := json.MarshalIndent(data, "", "  ")
+	jsonBytes, err := json.MarshalIndent(data, "", "  ")
 	if err != nil {
 		return err
 	}
 
-	if err := ioutil.WriteFile(path, json_bytes, 0777); err != nil {
+	if err := ioutil.WriteFile(path, jsonBytes, 0777); err != nil {
 		return err
 	}
 

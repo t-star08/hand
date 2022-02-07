@@ -46,12 +46,12 @@ func forwardCollect(v *visitor.Visitor, collectibles []string, path string, dept
 		if result, err := v.Evaluator.Evaluate(v.Goal, info); err != nil {
 			return collectibles, err
 		} else if result {
-			collectibles = append(collectibles, path)
+			collectibles = append(collectibles, fmt.Sprintf("%s/%s", path, resource.Name()))
 		}
 	}
 
-	for _, dir := range dirEntries {
-		if c, err := forwardCollect(v, collectibles, fmt.Sprintf("%s/%s", path, dir.Name()), depth + 1); err != nil {
+	for _, resource := range dirEntries {
+		if c, err := forwardCollect(v, collectibles, fmt.Sprintf("%s/%s", path, resource.Name()), depth + 1); err != nil {
 			if err.Error() == "not found" {
 				continue
 			}
@@ -83,7 +83,7 @@ func backwardCollect(v *visitor.Visitor, collectibles []string, path string, dep
 		if result, err := v.Evaluator.Evaluate(v.Goal, info); err != nil {
 			return collectibles, err
 		} else if result {
-			collectibles = append(collectibles, path)
+			collectibles = append(collectibles, fmt.Sprintf("%s/%s", path, resource.Name()))
 		}
 	}
 
