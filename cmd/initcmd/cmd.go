@@ -24,11 +24,11 @@ var (
 )
 
 func createSettingsDirectory() error {
-	if _, err := os.Stat("./.hand"); !os.IsNotExist(err) {
-		return fmt.Errorf("\".hand\" already exist")
+	if _, err := os.Stat(fmt.Sprintf("./%s", config.CONF_DIR_NAME)); !os.IsNotExist(err) {
+		return fmt.Errorf("\"%s\" already exist", config.CONF_DIR_NAME)
 	}
 
-	os.Mkdir("./.hand", 0777)
+	os.Mkdir(fmt.Sprintf("./%s", config.CONF_DIR_NAME), 0777)
 	return nil
 }
 
@@ -37,7 +37,7 @@ func run(c *cobra.Command, args []string) {
 		logger.Fatalln(err)
 	}
 
-	if err := ioJson.Puts("./.hand/hand.json", template); err != nil {
+	if err := ioJson.Puts(fmt.Sprintf("./%s/%s", config.CONF_DIR_NAME, config.CONF_FILE_NAME), template); err != nil {
 		logger.Fatalln(err)
 	}
 }
