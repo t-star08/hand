@@ -58,7 +58,7 @@ func showLogList() error {
 		logDates = append(logDates, strings.Replace(info.Name(), ".json", "", -1))
 	}
 
-	return ioStd.MonospacedPuts(logDates)
+	return ioStd.MonospacedPuts("", logDates)
 }
 
 func run(c *cobra.Command, args []string) {
